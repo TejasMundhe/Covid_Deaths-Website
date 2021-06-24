@@ -1,0 +1,40 @@
+---
+title: "Covid-19 Deaths in the US"
+description: |
+  Plots of US Covid-19 Deaths by State
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+```{r raw_data, echo = FALSE}
+raw_data <- read.csv("Weekly_Provisional_Counts_of_Deaths_by_State_and_Select_Causes__2020-2021.csv")
+```
+```{r clean_data, echo = FALSE}
+clean_data <- raw_data %>%
+  rename(state = "Jurisdiction.of.Occurrence",
+         deaths = "Natural.Cause") %>%
+  mutate(region = tolower(state)) %>%
+  group_by(region) %>%
+  summarize(total = sum(deaths)) %>%
+  select(region, total)
+```
+
+
+```{r map_data, echo = FALSE}
+map_data("state") %>%
+  left_join(clean_data, by = "region") %>%
+  ggplot(aes(x = long, y = lat, group = group, fill =                   total)) +
+         geom_polygon() +
+        scale_fill_gradient(low = "blue", high = "red") +
+         theme_bw() +
+         labs(title = "Covid-19 Deaths by State in the Mainland U.S",
+              x = "Longitude",
+              y = "Latitude",
+              fill = "Total Natural Deaths",
+              caption = "Covid 19 Vaccines and Deaths by State (Nano Pepe)") 
+```
+
+

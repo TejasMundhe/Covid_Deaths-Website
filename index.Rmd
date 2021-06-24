@@ -28,13 +28,63 @@ map_data("state") %>%
   left_join(clean_data, by = "region") %>%
   ggplot(aes(x = long, y = lat, group = group, fill =                   total)) +
          geom_polygon() +
-        scale_fill_gradient(low = "blue", high = "red") +
+        scale_fill_gradient(low = "blue", high = "red", labels = scales::comma_format(accuracy = 1)) +
          theme_bw() +
          labs(title = "Covid-19 Deaths by State in the Mainland U.S",
+              subtitle = "As expected, more densly populated states tend to have larger death tolls",
               x = "Longitude",
               y = "Latitude",
-              fill = "Total Natural Deaths",
-              caption = "Covid 19 Vaccines and Deaths by State (Nano Pepe)") 
+              fill = "Total Natural\nCovid-19 Deaths",
+              caption = "Data from CDC") 
+```
+```{r clean_data2}
+clean_data2 <- raw_data %>%
+  rename(state = "Jurisdiction.of.Occurrence",
+         deaths = "Natural.Cause") %>%
+  group_by(state) %>%
+  summarize(total_death = sum(deaths)) %>%
+  arrange(total_death) %>%
+  slice(1:10) %>%
+  select(state, total_death) 
+```
+```{r map_data2}
+ clean_data2 %>%
+  ggplot(aes(x = total_death, y = fct_reorder(state, desc(total_death)), fill = desc(total_death))) +
+         geom_col() +
+         scale_fill_gradient(low = "red", high = "blue") +
+         theme_classic() +
+         labs(title = "Top 10 States by Lowest Death Count",
+              subtitle = "States are generally sparsely populated, over a large area",
+              x = "Number of Deaths",
+              y = "",
+              fill = "Death Count\nVisualized",
+              caption = "Data from CDC")
+         
+```
+```{r clean_data3}
+clean_data3 <- raw_data %>%
+  rename(state = "Jurisdiction.of.Occurrence",
+         deaths = "Natural.Cause") %>%
+  filter(state != "United States") %>%
+  group_by(state) %>%
+  summarize(total_deaths = sum(deaths)) %>%
+  arrange(desc(total_deaths)) %>%
+  slice(1:10) %>%
+  select(state, total_deaths) 
+```
+```{r map_data3}
+clean_data3 %>%
+  ggplot(aes(x = total_deaths, y = fct_reorder(state, total_deaths),              fill = total_deaths)) +
+         geom_col() +
+         scale_x_continuous(labels = scales::comma_format(accuracy = 1)) +
+         scale_fill_gradient(low = "blue", high = "red", labels = scales::comma_format(accuracy = 1)) +
+         theme_classic() +
+         labs(title = "Top 10 States by Highest Death Count",
+              subtitle = "California leads by a sizable margin",
+              x = "Number of Deaths",
+              y = "",
+              fill = "Death Count\nVisualized",
+              caption = "Data from CDC")
 ```
 
 

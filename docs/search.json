@@ -3,18 +3,18 @@
     {
       "path": "about.html",
       "title": "About this site",
-      "description": "Some additional details about the website",
+      "description": "Additional details about the myself and this project",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-24T15:18:38-04:00"
+      "contents": "\r\nAbout Me\r\nHi, my name is Tejas Mundhe and I am an incoming freshman at Walnut Hills High School. I enjoy playing soccer and swimming as well as having a passion for computer science where I have coded in Javascript Python, and R.\r\nAbout this Project\r\nThis project was made through Kane’s Free High School Data Science Bootcamp to explore how different states were affected by the Covid-19 Pandemic. The data set for this project was from a Covid 19 Vaccines and Deaths by State Dataset in which the data was gathered directly from the CDC.\r\nGoals\r\nTo Visualize the Covid-19 Deaths for every U.S state\r\nLearn about making plots and websites that are available on the internet\r\nTake my first steps into the world of data science\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-06-24T16:40:32-04:00"
     },
     {
       "path": "index.html",
       "title": "Covid-19 Deaths in the US",
       "description": "Plots of US Covid-19 Deaths by State\n",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-24T15:18:44-04:00"
+      "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-06-24T16:40:39-04:00"
     }
   ],
   "collections": []

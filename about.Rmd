@@ -1,10 +1,19 @@
 ---
 title: "About this site"
 description: |
-  Some additional details about the website
+  Additional details about the myself and this project
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+## About Me
+Hi, my name is [Tejas Mundhe](https://github.com/TejasMundhe) and I am an incoming freshman at Walnut Hills High School. I enjoy playing soccer and swimming as well as having a passion for computer science where I have coded in Javascript Python, and R.
 
+## About this Project 
+This project was made through [Kane’s Free High School Data Science Bootcamp](https://bootcamp.davidkane.info) to explore how different states were affected by the Covid-19 Pandemic. The data set for this project was from a [Covid 19 Vaccines and Deaths by State Dataset](https://www.kaggle.com/nanopepe/covid-19-vaccines-and-deaths-by-state) in which the data was gathered directly from the CDC.
+
+## Goals
+* To Visualize the Covid-19 Deaths for every U.S state
+* Learn about making plots and websites that are available on the internet
+* Take my first steps into the world of data science
